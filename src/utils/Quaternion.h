@@ -52,7 +52,7 @@ struct Quaternion
         };
     }
 
-    Vector3f rotateVecFromBdyToENU (const Vector3f& v){
+    Vector3f rotateVecFromBodyToENU (const Vector3f& v){
         
     }
 };

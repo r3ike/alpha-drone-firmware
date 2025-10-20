@@ -15,7 +15,7 @@ struct Task
 };
 
 
-class TaskScheduler
+class TaskSchedulerSoft
 {
 private:
     uint8_t _numTask;
@@ -23,7 +23,7 @@ private:
     Task _tasks[_NUM_MAX_TASKS];
 
 public:
-    TaskScheduler() : _numTask(0) {};
+    TaskSchedulerSoft() : _numTask(0) {};
 
     void addTask(void (*callback)(), uint32_t interval_us){
         if (_numTask < _NUM_MAX_TASKS)

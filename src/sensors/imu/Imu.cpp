@@ -24,6 +24,7 @@ bool Imu::init() {
 }
 
 void Imu::calib(){
+    _gyro_rate_calib = {0,0,0};
     for (int i = 0; i < IMU_CALIBRATION_STEP; i++)
     {
         _gyro_rate_calib = _gyro_rate_calib + getRawGyro();

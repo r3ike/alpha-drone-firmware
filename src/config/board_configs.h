@@ -13,9 +13,9 @@
     #define RED_LED_PIN 15
     #define GREEN_LED_PIN 14
 
-    #define MOTOR1_PIN 1
-    #define MOTOR2_PIN 1
-    #define MOTOR3_PIN 1
-    #define MOTOR4_PIN 1
+    #define MOTOR_FL_PIN 3
+    #define MOTOR_FR_PIN 4
+    #define MOTOR_BL_PIN 2
+    #define MOTOR_BR_PIN 5
 
 #endif

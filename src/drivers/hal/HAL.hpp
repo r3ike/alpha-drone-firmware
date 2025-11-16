@@ -1,11 +1,12 @@
-#ifndef HAL_HPP
-#define HAL_HPP
+#pragma once
 
-#include <drivers/hal/SITL/HAL_sitl.hpp>
-#include <drivers/hal/teensy/HAL_Teensy.hpp>
+#ifdef HAL_TEENSY
+    #include <drivers/hal/teensy/HAL_Teensy.hpp>
+#elif defined(HAL_SITL)
+    #include <drivers/hal/SITL/HAL_sitl.hpp>
+#endif
 
-class HAL
-{
+class HAL{
 public:
     HAL();
     HAL_IMU* imu;
@@ -17,7 +18,9 @@ public:
 
 HAL createHAL();
 
-
+/*---------------------------------
+    CLASSI INTERFACE PER HAL
+----------------------------------*/
 class HAL_IMU {
 public:
     virtual void readGyro() = 0;
@@ -49,10 +52,9 @@ public:
     virtual void write(float m1, float m2, float m3, float m4) = 0;
 };
 
-
 class HAL_Logging {
 public:
-    virtual unsigned long long micros() = 0;
+    virtual unsigned long long writeLog() = 0;
 };
 
 class HAL_Telemetry {
@@ -64,7 +66,3 @@ class HAL_Time {
 public:
     virtual unsigned long long micros() = 0;
 };
-
-
-
-#endif

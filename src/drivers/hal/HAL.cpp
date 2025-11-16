@@ -10,7 +10,7 @@ HAL createHAL(){
         //hal.telemetry = new HAL_Telemetry_Teensy();
         //hal.logging = new HAL_Logging_Teensy();
         //hal.time = new HAL_Time_Teensy();
-    #elif HAL_SITL
+    #elif defined(HAL_SITL)
         hal.imu = new HAL_IMU_SITL();
         hal.pwm = new HAL_PWM_SITL();
         //hal.telemetry = new HAL_Telemetry_SITL();

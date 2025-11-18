@@ -1,4 +1,4 @@
-#include "./drivers/hal/HAL.hpp"
+#include "hal/HAL.hpp"
 #include "HAL.hpp"
 
 HAL createHAL(){

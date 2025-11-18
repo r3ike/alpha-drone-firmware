@@ -1,4 +1,4 @@
-#include <drivers/hal/teensy/HAL_Teensy.hpp>
+#include <hal/teensy/HAL_Teensy.hpp>
 #include "HAL_Teensy.hpp"
 
 /*--------------------------

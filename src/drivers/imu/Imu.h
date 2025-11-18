@@ -19,14 +19,19 @@ private:
     Vector3f _gyro_rate_calib;
     BMI088 bmi088 = BMI088(BMI088_ACC_ADDRESS, BMI088_GYRO_ADDRESS);
 
+    bool connect();
+    
 public:
     Imu();
+    ~Imu();
 
     bool init();
     void calib();
 
     Vector3f getRawGyro();
     Vector3f getRawAccel();
+
+    int16_t getImuTemp();
 };
 
 #endif

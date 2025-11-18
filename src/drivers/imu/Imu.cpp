@@ -1,27 +1,31 @@
-#include <sensors/imu/Imu.h>
+#include <drivers/imu/Imu.h>
+#include "Imu.h"
 
 
-Imu::Imu(){
-    _gyro_rate_calib = {0,0,0};
-}
 
+Imu::Imu() {}
+Imu::~Imu(){}
 
 bool Imu::init() {
+    _gyro_rate_calib = {0,0,0};
+
+    bool res = connect();
+
+    return res;
+}
+
+bool Imu::connect()
+{
     bool success_flag = false;
 
-    unsigned long startTime = millis();
-    while (millis() - startTime < 5000) { // Timeout di 5 secondi
-        if (bmi088.isConnection()) {
-            bmi088.initialize();
-            Serial.println("BMI088 is connected");
-            success_flag = true;
-            break;
-        } else {
-            Serial.println("BMI088 is not connected");
-        }
+    if (bmi088.isConnection()) {
+        bmi088.initialize();
+        success_flag = true;
     }
+
     return success_flag;
 }
+
 
 void Imu::calib(){
     _gyro_rate_calib = {0,0,0};
@@ -39,13 +43,20 @@ Vector3f Imu::getRawGyro(){
 
     bmi088.getGyroscope(&gyro[0], &gyro[1], &gyro[2]);
 
-    return {gyro[0], gyro[1], gyro[2]};
+    return {gyro[0] - _gyro_rate_calib.x, gyro[1] - _gyro_rate_calib.y, gyro[2] - _gyro_rate_calib.z};
 }
 
 Vector3f Imu::getRawAccel(){
     float acc[3];
 
-    bmi088.getGyroscope(&acc[0], &acc[1], &acc[2]);
+    bmi088.getAcceleration(&acc[0], &acc[1], &acc[2]);
 
     return {acc[0], acc[1], acc[2]};
+}
+
+int16_t Imu::getImuTemp()
+{
+    int16_t imuTemp = bmi088.getTemperature();
+
+    return imuTemp;
 }

@@ -29,10 +29,11 @@ struct Quaternion
 
     void normalize(){
         float norm = std::sqrt(w * w + x * x + y * y + z * z);  //std:: definisce che vogliamo usare nello specifico la funzione della libreria di cmath
+        /*
         w /= norm;
         x /= norm;
         y /= norm;
-        z /= norm;
+        z /= norm;*/
 
         if(norm > 1e-6f){
             w /= norm;
@@ -40,6 +41,9 @@ struct Quaternion
             y /= norm;
             z /= norm;
         }
+        /*
+        float n = std::sqrt(w * w + x * x + y * y + z * z);
+        if (n > 1e-6f) { w /= n; x /= n; y /= n; z /= n; }*/
 
     }
 

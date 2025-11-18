@@ -1,4 +1,4 @@
-#include <drivers/hal/SITL/HAL_sitl.hpp>
+#include <hal/SITL/HAL_sitl.hpp>
 #include "HAL_sitl.hpp"
 
 HAL_IMU_SITL::HAL_IMU_SITL()

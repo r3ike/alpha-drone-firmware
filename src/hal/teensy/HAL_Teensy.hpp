@@ -1,5 +1,5 @@
 #pragma once
-#include <drivers/hal/HAL.hpp>
+#include <hal/HAL.hpp>
 
 class HAL_IMU_Teensy : public HAL_IMU
 {

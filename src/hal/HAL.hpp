@@ -1,9 +1,9 @@
 #pragma once
 
 #ifdef HAL_TEENSY
-    #include <drivers/hal/teensy/HAL_Teensy.hpp>
+    #include <hal/teensy/HAL_Teensy.hpp>
 #elif defined(HAL_SITL)
-    #include <drivers/hal/SITL/HAL_sitl.hpp>
+    #include <hal/SITL/HAL_sitl.hpp>
 #endif
 
 class HAL{

@@ -11,13 +11,13 @@
 #include <utils/Vector3f.h>
 #include <utils/Quaternion.h>
 #include <config/board_configs.h>
-#include <config/parameters.h>
+#include <config/board_configs.h>
 
 class Imu
 {
 private:
     Vector3f _gyro_rate_calib;
-    BMI088 bmi088 = BMI088(BMI088_ACC_ADDRESS, BMI088_GYRO_ADDRESS);
+    BMI088 _bmi088 = BMI088(BMI088_ACC_ADDRESS, BMI088_GYRO_ADDRESS);
 
     bool connect();
     

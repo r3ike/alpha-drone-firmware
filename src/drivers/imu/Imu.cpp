@@ -2,7 +2,6 @@
 #include "Imu.h"
 
 
-
 Imu::Imu() {}
 Imu::~Imu(){}
 
@@ -18,14 +17,13 @@ bool Imu::connect()
 {
     bool success_flag = false;
 
-    if (bmi088.isConnection()) {
-        bmi088.initialize();
+    if (_bmi088.isConnection()) {
+        _bmi088.initialize();
         success_flag = true;
     }
 
     return success_flag;
 }
-
 
 void Imu::calib(){
     _gyro_rate_calib = {0,0,0};
@@ -41,7 +39,7 @@ void Imu::calib(){
 Vector3f Imu::getRawGyro(){
     float gyro[3];
 
-    bmi088.getGyroscope(&gyro[0], &gyro[1], &gyro[2]);
+    _bmi088.getGyroscope(&gyro[0], &gyro[1], &gyro[2]);
 
     return {gyro[0] - _gyro_rate_calib.x, gyro[1] - _gyro_rate_calib.y, gyro[2] - _gyro_rate_calib.z};
 }
@@ -49,14 +47,14 @@ Vector3f Imu::getRawGyro(){
 Vector3f Imu::getRawAccel(){
     float acc[3];
 
-    bmi088.getAcceleration(&acc[0], &acc[1], &acc[2]);
+    _bmi088.getAcceleration(&acc[0], &acc[1], &acc[2]);
 
     return {acc[0], acc[1], acc[2]};
 }
 
 int16_t Imu::getImuTemp()
 {
-    int16_t imuTemp = bmi088.getTemperature();
+    int16_t imuTemp = _bmi088.getTemperature();
 
     return imuTemp;
 }

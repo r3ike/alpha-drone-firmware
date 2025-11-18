@@ -4,7 +4,8 @@
             BOARD CONFIG
     -------------------------*/
     #define WIRE_CLOCK 400000
-
+    
+    #define MAG_ADDRESS 0x1E
 
     /*-----------------------
             PIN CONFIG
@@ -17,5 +18,7 @@
     #define MOTOR_FR_PIN 4
     #define MOTOR_BL_PIN 2
     #define MOTOR_BR_PIN 5
+
+
 
 #endif

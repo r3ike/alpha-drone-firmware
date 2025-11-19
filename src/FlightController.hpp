@@ -4,18 +4,19 @@
 
 #include <hal/HAL.hpp>
 
-HAL* hal;
+//HAL* hal;
 
 class FlightController
 {
 private:
-    
+    HAL hal;
 public:
     FlightController(/* args */);
+    ~FlightController();
     
     void init();
+    static void TaskAttitudeEstimation(void *pvParameters);
 
-    ~FlightController();
 };
 
 

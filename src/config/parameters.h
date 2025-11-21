@@ -1,6 +1,7 @@
 #ifndef PARAMETERS_H
 #define PARAMETERS_H
 
+    #define ENVIRONMENT "REAL"      //REAL SITL BENCH HIL
     /*-----------------------
         PHISICAL CONSTANTS
     -------------------------*/
@@ -30,10 +31,19 @@
     #define MOTOR_MIN 1000              //Per il minimo del motore (Da calcolare)
     #define MOTOR_MAX 1800             //Massimo del motore
 
+    /*-----------------------
+        CALIBRATION PARAMETERS
+    -------------------------*/
     #define IMU_CALIBRATION_STEP 2000
 
     #define X_MAG_OFFSET 11.0
     #define Y_MAG_OFFSET -78.5
-    
+
+    /*-----------------------
+        LPF PARAMETERS
+    -------------------------*/
+    #define ACC_CUTOFF_FREQ 80
+    #define GYRO_CUTOFF_FREQ 200
+    #define MAG_CUTOFF_FREQ 5
 
 #endif

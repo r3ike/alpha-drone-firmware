@@ -23,8 +23,10 @@ HAL createHAL();
 ----------------------------------*/
 class HAL_IMU {
 public:
-    virtual void readGyro() = 0;
-    virtual void readAccel() = 0;
+    virtual void calib() = 0;
+    virtual Vector3f readGyro() = 0;
+    virtual Vector3f readAccel() = 0;
+    virtual ImuData read() = 0;
 };
 
 class HAL_GPS {

@@ -6,14 +6,27 @@
 ---------------------------*/
 HAL_IMU_Teensy::HAL_IMU_Teensy()
 {
+    bool res = imu.init();
 }
 
-void HAL_IMU_Teensy::readGyro()
+void HAL_IMU_Teensy::calib()
 {
+    imu.calib();
 }
 
-void HAL_IMU_Teensy::readAccel()
+Vector3f HAL_IMU_Teensy::readGyro()
 {
+    return imu.getRawGyro();
+}
+
+Vector3f HAL_IMU_Teensy::readAccel()
+{
+    return imu.getRawAccel();
+}
+
+ImuData HAL_IMU_Teensy::read()
+{
+    return imu.getRawImu();
 }
 
 /*--------------------------

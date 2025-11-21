@@ -11,7 +11,15 @@
 #include <utils/Vector3f.h>
 #include <utils/Quaternion.h>
 #include <config/board_configs.h>
-#include <config/board_configs.h>
+#include <config/parameters.h>
+
+struct ImuData
+{
+    Vector3f gyro;
+    Vector3f acc;
+    int16_t temp;
+};
+
 
 class Imu
 {
@@ -30,6 +38,7 @@ public:
 
     Vector3f getRawGyro();
     Vector3f getRawAccel();
+    ImuData getRawImu();
 
     int16_t getImuTemp();
 };

@@ -7,11 +7,12 @@ SDLogger::~SDLogger(){}
 bool SDLogger::init()
 {
     return sd.begin(BUILTIN_SDCARD);
+    file = sd.open('logs.log', FILE_WRITE);
 }
 
 void SDLogger::writeLog(String msg)
 {
-    file = sd.open('logs.log', FILE_WRITE);
+    
 
     if (file)
     {
@@ -20,3 +21,5 @@ void SDLogger::writeLog(String msg)
     }
     
 }
+
+

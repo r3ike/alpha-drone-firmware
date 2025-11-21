@@ -52,6 +52,15 @@ Vector3f Imu::getRawAccel(){
     return {acc[0], acc[1], acc[2]};
 }
 
+ImuData Imu::getRawImu()
+{
+    return {
+        getRawGyro(),
+        getRawAccel(),
+        getImuTemp()
+    };
+}
+
 int16_t Imu::getImuTemp()
 {
     int16_t imuTemp = _bmi088.getTemperature();

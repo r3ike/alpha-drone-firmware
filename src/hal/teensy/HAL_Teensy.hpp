@@ -1,16 +1,22 @@
 #pragma once
 #include <hal/HAL.hpp>
 
+#include <drivers/imu/Imu.h>
+
 class HAL_IMU_Teensy : public HAL_IMU
 {
 private:
-    /* data */
+    Imu imu;
 public:
     HAL_IMU_Teensy();
 
-    void readGyro() override;
+    void calib() override;
 
-    void readAccel() override;
+    Vector3f readGyro() override;
+
+    Vector3f readAccel() override;
+
+    ImuData read() override;
 };
 
 class HAL_PWM_Teensy : public HAL_PWM

@@ -1,0 +1,22 @@
+#include <drivers/sdLogger/SDLogger.hpp>
+#include "SDLogger.hpp"
+
+SDLogger::SDLogger(){}
+SDLogger::~SDLogger(){}
+
+bool SDLogger::init()
+{
+    return sd.begin(BUILTIN_SDCARD);
+}
+
+void SDLogger::writeLog(String msg)
+{
+    file = sd.open('logs.log', FILE_WRITE);
+
+    if (file)
+    {
+        file.println(msg);
+        file.close();
+    }
+    
+}

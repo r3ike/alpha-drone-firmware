@@ -19,6 +19,8 @@
     #define MOTOR_BL_PIN 2
     #define MOTOR_BR_PIN 5
 
-
+    #ifndef BUILTIN_SDCARD
+    #define BUILTIN_SDCARD 254
+    #endif
 
 #endif

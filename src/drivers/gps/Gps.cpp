@@ -4,9 +4,9 @@
 Gps::Gps() {}
 Gps::~Gps() {}
 
-void Gps::init(Stream *serial)
+bool Gps::init(Stream *serial)
 {
-    serialPtr = serial;
+    this->serialPtr = serial;
 
     // --- UBX CONFIG ---
     sendUBX(UBX_CFG_RATE_10HZ, sizeof(UBX_CFG_RATE_10HZ));

@@ -7,18 +7,21 @@ private:
     /* data */
 public:
     HAL_IMU_SITL();
+    ~HAL_IMU_SITL();
 
-    void readGyro() override;
-
-    void readAccel() override;
+    virtual bool init() override;
+    virtual void calib() override;
+    virtual Vector3f readGyro() override;
+    virtual Vector3f readAccel() override;
+    virtual ImuData read() override;
 };
 
-class HAL_PWM_SITL : public HAL_PWM
+class HAL_MOTOR_SITL : public HAL_MOTOR
 {
 private:
     /* data */
 public:
-    HAL_PWM_SITL();
+    HAL_MOTOR_SITL();
 
     void write(float m1, float m2, float m3, float m4) override;
 };

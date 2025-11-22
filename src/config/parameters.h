@@ -35,6 +35,7 @@
         CALIBRATION PARAMETERS
     -------------------------*/
     #define IMU_CALIBRATION_STEP 2000
+    #define LIDAR_CALIBRATION_STEP 2000
 
     #define X_MAG_OFFSET 11.0
     #define Y_MAG_OFFSET -78.5

@@ -15,10 +15,10 @@ void HAL_IMU_SITL::readAccel(){
 }
 
 
-HAL_PWM_SITL::HAL_PWM_SITL()
+HAL_MOTOR_SITL::HAL_MOTOR_SITL()
 {
 }
 
-void HAL_PWM_SITL::write(float m1, float m2, float m3, float m4)
+void HAL_MOTOR_SITL::write(float m1, float m2, float m3, float m4)
 {
 }

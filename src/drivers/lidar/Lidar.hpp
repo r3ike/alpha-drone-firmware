@@ -2,19 +2,32 @@
 
 #include <utils/Vector3f.h>
 #include <../lib/TFMPlus/TFMPlus.h>
+#include <config/parameters.h>
+
+struct LidarData
+{
+    int16_t altitude;       //
+    int16_t tfFlux;         // Qualità del segnale di ritorno
+    int16_t tfTemp;         //temperatura del sensore
+};
+
 
 class Lidar
 {
 private:
-    TFMPlus lidar;
+    TFMPlus _lidar;
+
+    int16_t _alt_calib_offset;
+
 public:
     Lidar();
 
     bool init(Stream *serialPtr);
 
     //int16_t read();
+    void calib();
 
-    Vector3f read();
+    LidarData read();
 
     ~Lidar();
 };

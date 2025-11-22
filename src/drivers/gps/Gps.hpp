@@ -42,7 +42,7 @@ public:
     Gps();
     ~Gps();
 
-    void init(Stream *serialPtr);
+    bool init(Stream *serialPtr);
 
     GpsData read();
 };

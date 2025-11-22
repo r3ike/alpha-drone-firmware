@@ -4,9 +4,12 @@
 /*--------------------------
         HAL IMU
 ---------------------------*/
-HAL_IMU_Teensy::HAL_IMU_Teensy()
+HAL_IMU_Teensy::HAL_IMU_Teensy(){}
+HAL_IMU_Teensy::~HAL_IMU_Teensy(){}
+
+bool HAL_IMU_Teensy::init()
 {
-    bool res = imu.init();
+    return imu.init();
 }
 
 void HAL_IMU_Teensy::calib()
@@ -30,13 +33,39 @@ ImuData HAL_IMU_Teensy::read()
 }
 
 /*--------------------------
-        HAL PWM
+        HAL MOTOR
 ---------------------------*/
 
-HAL_PWM_Teensy::HAL_PWM_Teensy()
+HAL_MOTOR_Teensy::HAL_MOTOR_Teensy(){}
+HAL_MOTOR_Teensy::~HAL_MOTOR_Teensy(){}
+
+void HAL_MOTOR_Teensy::write(float m1, float m2, float m3, float m4)
+{
+}
+/*--------------------------
+        HAL LIDAR
+---------------------------*/
+HAL_LIDAR_Teensy::HAL_LIDAR_Teensy(){}
+HAL_LIDAR_Teensy::~HAL_LIDAR_Teensy(){}
+
+bool HAL_LIDAR_Teensy::init(Stream *serialPtr)
+{
+    return lidar.init(serialPtr);
+}
+
+void HAL_LIDAR_Teensy::calib()
 {
 }
 
-void HAL_PWM_Teensy::write(float m1, float m2, float m3, float m4)
+/*--------------------------
+        HAL GPS
+---------------------------*/
+HAL_GPS_Teensy::HAL_GPS_Teensy(){}
+HAL_GPS_Teensy::~HAL_GPS_Teensy(){}
+
+
+bool HAL_GPS_Teensy::init(Stream *serialPtr)
 {
+    return gps.init(serialPtr);
 }
+

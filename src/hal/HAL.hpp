@@ -6,11 +6,28 @@
     #include <hal/SITL/HAL_sitl.hpp>
 #endif
 
+struct HALState{
+    bool imu_state;
+    bool motor_state;
+    bool mag_state;
+    bool lidar_state;
+    bool gps_state;
+    bool tlm_state;
+    bool loger_state;
+};
+
 class HAL{
 public:
     HAL();
+    ~HAL();
+
+    HALState init();
+
     HAL_IMU* imu;
-    HAL_PWM* pwm;
+    HAL_GPS* gps;
+    HAL_LIDAR* lidar;
+    HAL_MAG* mag;
+    HAL_MOTOR* motor;
     HAL_Telemetry* telemetry;
     HAL_Logging* logger;
     HAL_Time* time;
@@ -23,6 +40,7 @@ HAL createHAL();
 ----------------------------------*/
 class HAL_IMU {
 public:
+    virtual bool init() = 0;
     virtual void calib() = 0;
     virtual Vector3f readGyro() = 0;
     virtual Vector3f readAccel() = 0;
@@ -31,11 +49,14 @@ public:
 
 class HAL_GPS {
 public:
-    virtual void read() = 0;
+    virtual bool init(Stream *serialPtr) = 0;
+    virtual bool init() = 0;
+    virtual GpsData read() = 0;
 };
 
 class HAL_MAG {
 public:
+    virtual bool init() = 0;
     virtual void read() = 0;
 };
 
@@ -46,12 +67,18 @@ public:
 
 class HAL_LIDAR {
 public:
-    virtual void readAlt() = 0;
+    virtual bool init(Stream *serialPtr) = 0;
+    virtual bool init() = 0;
+    virtual void calib() = 0;
+    virtual LidarData read() = 0;
 };
 
-class HAL_PWM {
+class HAL_MOTOR {
 public:
+    virtual void init() = 0;
     virtual void write(float m1, float m2, float m3, float m4) = 0;
+    virtual void stop() = 0;
+    virtual void test() = 0;
 };
 
 class HAL_Logging {
